@@ -52,7 +52,16 @@ class ExpressionParser {
 
         int[] parsedOperands = new int[operands.length];
         for (int i = 0; i < operands.length; i++) {
-            parsedOperands[i] = Integer.parseInt(operands[i]);
+            try {
+            if (!(Integer.parseInt(operands[i]) > 10)) {
+
+                parsedOperands[i] = Integer.parseInt(operands[i]);
+            } else{
+                System.exit(1);
+            }}
+            catch (NumberFormatException e){
+                System.exit(1);
+            }
         }
         if (operators.length>2){
 
@@ -90,13 +99,13 @@ class Calculation {
                 case "/":
                     if (nextOperand == 0) {
 
-                        return 0;
+                        System.exit(1);
                     }
                     result /= nextOperand;
                     break;
                 default:
 
-                    return 0;
+                    System.exit(1);
             }
         }
 
